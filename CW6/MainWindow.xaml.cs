@@ -44,7 +44,8 @@ namespace CW6
                 DataDisplay1.Text=data += "\n";
             }
             cn.Close();
-        }
+        } 
+
 
         private void EmployeesButton_Click(object sender, RoutedEventArgs e)
         {
