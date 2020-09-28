@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.OleDb;
 
 namespace CW6
 {
@@ -20,9 +21,47 @@ namespace CW6
     /// </summary>
     public partial class MainWindow : Window
     {
+        OleDbConnection cn;
         public MainWindow()
         {
             InitializeComponent();
+            cn = new OleDbConnection(@"Provider = Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\CW6Database.accdb");
+        }
+
+        private void AssetsButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "select* from Assets";
+            OleDbCommand cmd = new OleDbCommand(query, cn);
+            cn.Open();
+            OleDbDataReader read = cmd.ExecuteReader();
+            string data = "";
+            while (read.Read())
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    data += read[i].ToString() + " ";
+                }
+                DataDisplay1.Text=data += "\n";
+            }
+            cn.Close();
+        }
+
+        private void EmployeesButton_Click(object sender, RoutedEventArgs e)
+        {
+            string query = "select* from Employees";
+            OleDbCommand cmd = new OleDbCommand(query, cn);
+            cn.Open();
+            OleDbDataReader read = cmd.ExecuteReader();
+            string data = "";
+            while (read.Read())
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    data += read[i].ToString() + " ";
+                }
+                DataDisplay1.Text = data += "\n";
+            }
+            cn.Close();
         }
     }
 }

@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:CW6"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid x:Name="DataDisplay" Margin="0,0,23.6,1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="82*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="DataDisplay1" HorizontalAlignment="Left" Height="181" Margin="129,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="515" Grid.ColumnSpan="2"><Run/></TextBlock>
+        <Button x:Name="AssetsButton" Content="See Assets" HorizontalAlignment="Left" Height="39" Margin="171,295,0,0" VerticalAlignment="Top" Width="138" Click="AssetsButton_Click"/>
+        <Button x:Name="EmployeesButton" Content="See Employees" HorizontalAlignment="Left" Margin="493,295,0,0" VerticalAlignment="Top" Width="138" Height="39" Grid.ColumnSpan="2" Click="EmployeesButton_Click"/>
+
     </Grid>
 </Window>
